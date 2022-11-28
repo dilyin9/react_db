@@ -9,10 +9,9 @@ const QualitiesListPage = () => {
     useEffect(async () => {
       const {data} = await axios
       .get("http://localhost:4000/api/v1/quality");
-    setQualities(data.content)
+    setQualities(data.content);
     },[])
     const handleEdit = (param) => {
-        console.log(param);
         history.push(`/edit/${param}`);
     };
     const handleDelete = (param) => {
@@ -24,7 +23,7 @@ const QualitiesListPage = () => {
             <QualitiesTable
                 onDelete={handleDelete}
                 onEdit={handleEdit}
-                data={[qualities]}
+                data={qualities}
             />
         </>
     );
