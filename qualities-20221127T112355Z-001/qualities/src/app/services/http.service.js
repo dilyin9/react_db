@@ -1,10 +1,14 @@
 import axios from "axios";
+import {toast} from 'react-toastify'
+import config from '../config.json'
+axios.defaults.baseURL = config.apiEndPoint
 axios.interceptors.response.use((res) => res, 
 function(error) {
    
     const expectedErrors = error.response && error.response.status >=400 && error.response.status < 500
     if (!expectedErrors) {
-        console.log('unexpected error');
+        toast('Undepxcted error')
+        toast.info('sth wrong')
     }
     return Promise.reject(error)
 })
